@@ -4,7 +4,7 @@ IP="$(echo "$NAME" | rev | cut -d"-" -f1 | rev)"
 echo -e "auto lo\niface lo inet loopback\nauto eth0\niface eth0 inet static\n  address 10.10.8.$IP/16\n  gateway 10.10.0.1\n  hostname $NAME" > /etc/network/interfaces
 echo -e "search lan\nnameserver 1.1.1.1" > /etc/resolv.conf
 /etc/init.d/networking restart > /dev/null 2>&1
-echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.16/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.16/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing"
+echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.16/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.16/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories
 echo "Installiere Pakete..."
 apk update > /dev/null 2>&1
 apk add nano libvirt-daemon libvirt libvirt-qemu qemu-img qemu-system-x86_64 qemu-modules openrc dbus polkit virt-manager terminus-font xf86-video-intel xf86-video-nouveau xf86-video-fbdev xf86-video-vesa i3wm i3status xterm udev ovmf > /dev/null 2>&1
