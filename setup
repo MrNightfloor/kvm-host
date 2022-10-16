@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 read -e -p "Name des PCs: " -i "B414-" NAME
 IP="$(echo "$NAME" | rev | cut -d"-" -f1 | rev)"
 echo -e "auto lo\niface lo inet loopback\nauto eth0\niface eth0 inet static\n  address 10.10.8.$IP/16\n  gateway 10.10.0.1\n  hostname $NAME" > /etc/network/interfaces
