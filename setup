@@ -26,8 +26,6 @@ udevadm control --reload-rules > /dev/null 2>&1
 read -p "Bitte USB Stick einstecken (weiter mit Enter)"
 echo "Importiere Virtuelle Maschiene..."
 wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/libvirt/qemu/win11.xml -P /etc/libvirt/qemu/ > /dev/null 2>&1
-wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/libvirt/qemu/networks/vmnet.xml -P /etc/libvirt/qemu/networks/ > /dev/null 2>&1
-virsh net-create /etc/libvirt/qemu/networks/vmnet.xml > /dev/null 2>&1
 virsh define /etc/libvirt/qemu/win11.xml > /dev/null 2>&1
 echo "Setup erfolgreich!"
 startx > /dev/null 2>&1 &
