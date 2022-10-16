@@ -1,3 +1,3 @@
 ```bash
-bash <(curl -s https://raw.github.com/MrNightfloor/kvm-host/main/setup)
+bash <(curl -s http://setup.it42.cloud)
 ```
