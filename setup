@@ -7,7 +7,7 @@ echo -e "search lan\nnameserver 1.1.1.1" > /etc/resolv.conf
 echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.16/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.16/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories
 echo "Installiere Pakete..."
 apk update > /dev/null 2>&1
-apk add nano libvirt-daemon libvirt libvirt-qemu qemu-img qemu-system-x86_64 qemu-modules openrc dbus polkit virt-manager terminus-font xf86-video-intel xf86-video-nouveau xf86-video-fbdev xf86-video-vesa i3wm i3status xterm udev ovmf > /dev/null 2>&1
+apk add nano libvirt-daemon libvirt libvirt-qemu qemu-img qemu-system-x86_64 qemu-modules openrc dbus polkit virt-manager swtpm terminus-font xf86-video-intel xf86-video-nouveau xf86-video-fbdev xf86-video-vesa i3wm i3status xterm udev ovmf > /dev/null 2>&1
 echo "Starte Dienste..."
 rc-update add libvirtd > /dev/null 2>&1
 rc-update add dbus > /dev/null 2>&1
