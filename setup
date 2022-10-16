@@ -1,0 +1,21 @@
+#!/bin/sh
+read -e -p "Name des PCs: " -i "B414-" NAME
+IP="$(echo "$NAME" | rev | cut -d"-" -f1 | rev)"
+echo -e "auto lo\niface lo inet loopback\nauto eth0\niface eth0 inet static\n  address 10.10.8.$IP/16\n  gateway 10.10.0.1\n  hostname $NAME" > /etc/network/interfaces
+echo -e "search lan\nnameserver 1.1.1.1" > /etc/resolv.conf
+/etc/init.d/networking restart
+echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.16/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.16/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing"
+apk update
+apk add nano libvirt-daemon libvirt libvirt-qemu qemu-img qemu-system-x86_64 qemu-modules openrc dbus polkit virt-manager terminus-font xf86-video-intel xf86-video-nouveau xf86-video-fbdev xf86-video-vesa i3wm i3status xterm udev ovmf
+rc-update add libvirtd
+rc-update add dbus
+rc-update add libvirt-guests
+rc-service libvirtd start
+rc-service libvirt-guests start
+cat /etc/modules | grep tun || echo tun >> /etc/modules
+modprobe tun
+setup-xorg-base
+echo "exec i3" > /root/.xinitrc
+wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/udev/rules.d/11-media-by-label-auto-mount.rules -P /etc/udev/rules.d/
+wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/i3/config -P /root/.config/i3/
+udevadm control --reload-rules
