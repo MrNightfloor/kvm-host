@@ -20,6 +20,7 @@ echo "Konfiguriere System..."
 setup-xorg-base > /dev/null 2>&1
 echo "exec i3" > /root/.xinitrc
 wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/udev/rules.d/11-media-by-label-auto-mount.rules -P /etc/udev/rules.d/ > /dev/null 2>&1
+mkdir -p /root/.config/i3
 wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/i3/config -P /root/.config/i3/ > /dev/null 2>&1
 udevadm control --reload-rules > /dev/null 2>&1
 read -p "Bitte USB Stick einstecken (weiter mit Enter)"
