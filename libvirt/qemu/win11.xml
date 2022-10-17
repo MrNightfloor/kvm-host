@@ -150,6 +150,9 @@
     </input>
     <input type='mouse' bus='ps2'/>
     <input type='keyboard' bus='ps2'/>
+    <input type='mouse' bus='usb'>
+      <address type='usb' bus='0' port='4'/>
+    </input>
     <tpm model='tpm-tis'>
       <backend type='emulator' version='2.0'/>
     </tpm>
