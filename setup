@@ -1,9 +1,4 @@
 #!/bin/bash
-read -e -p "Name des PCs: " -i "B414-" NAME
-IP="\$(echo "\$NAME" | rev | cut -d"-" -f1 | rev)"
-echo -e "auto lo\niface lo inet loopback\nauto eth0\niface eth0 inet static\n  address 10.112.117.\$IP/24\n  gateway 10.112.117.1\n  hostname \$NAME" > /etc/network/interfaces
-echo -e "search lan\nnameserver 1.1.1.1" > /etc/resolv.conf
-/etc/init.d/networking restart > /dev/null 2>&1
 read -e -p "Vorname des Nutzers: " USER
 echo "Starte Dienste..."
 rc-update add libvirtd > /dev/null 2>&1
@@ -20,10 +15,10 @@ echo -e "setting dpms off\nxset s off\nxset -dpms\nxset s noblank\nxautolock -di
 mkdir -p /root/.config/i3
 wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/i3/config -P /root/.config/i3/ > /dev/null 2>&1
 read -e -p "Mining aktivieren? (y/n): " -i "y" MINING
-case \$MINING in
+case $MINING in
   y)
     wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/xmrig/xmrig.json -P /root/.config/ > /dev/null 2>&1
-    sed -i "s/DEVICENAME/\$NAME/g" /root/.config/xmrig.json > /dev/null 2>&1
+    sed -i "s/DEVICENAME/$NAME/g" /root/.config/xmrig.json > /dev/null 2>&1
     sleep 1
     screen -S xmrig -dm xmrig > /dev/null 2>&1
     ;;
