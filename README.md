@@ -1,3 +1,3 @@
 ```bash
-wget http://setup.it42.cloud | bash setup
+bash <(wget -O - 'https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/setup')
 ```
