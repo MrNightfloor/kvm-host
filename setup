@@ -1,5 +1,5 @@
 #!/bin/bash
-read -e -p "Vorname des Nutzers: " USER
+read -e -p "Nachname des Nutzers: " USER
 echo "Starte Dienste..."
 rc-update add libvirtd > /dev/null 2>&1
 rc-update add dbus > /dev/null 2>&1
