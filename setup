@@ -14,7 +14,7 @@ setup-xorg-base > /dev/null 2>&1
 echo -e "setting dpms off\nxset s off\nxset -dpms\nxset s noblank\nxautolock -disable\nexec i3" > /root/.xinitrc
 mkdir -p /root/.config/i3
 wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/i3/config -P /root/.config/i3/ > /dev/null 2>&1
-read -e -p "Mining aktivieren? (y/n): " -i "y" MINING
+#read -e -p "Mining aktivieren? (y/n): " -i "y" MINING
 case $MINING in
   y)
     wget https://raw.githubusercontent.com/MrNightfloor/kvm-host/main/xmrig/xmrig.json -P /root/.config/ > /dev/null 2>&1
